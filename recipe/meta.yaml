@@ -29,8 +29,7 @@ test:
   imports:
     - webdav3.client
   requires:
-    - python {{ python_min }}
-  
+    - python {{ python_min }}  
 
 about:
   home: https://github.com/ezhov-evgeny/webdav-client-python-3
