@@ -6,8 +6,10 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 6c04252b579bc015cec78081480c63eadf1030f382768248777c6203f059b3f5build:
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 6c04252b579bc015cec78081480c63eadf1030f382768248777c6203f059b3f5
+
+build:
   number: 0
   noarch: python
   script: "{{ PYTHON }} -m pip install . -vv"
@@ -15,9 +17,10 @@ source:
 requirements:
   host:
     - python {{ python_min }}
+    - setuptools
     - pip
   run:
-    - python >={{ python_min }}
+    - python  >={{ python_min }}
     - requests
     - lxml
     - python-dateutil
@@ -26,7 +29,7 @@ test:
   imports:
     - webdav3.client
   requires:
-    - python {{ python_min }}
+    - python {{ python_min }}  
 
 about:
   home: https://github.com/ezhov-evgeny/webdav-client-python-3
