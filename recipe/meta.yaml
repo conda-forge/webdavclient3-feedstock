@@ -1,5 +1,5 @@
 {% set name = "webdavclient3" %}
-{% set version = "3.14.5" %}
+{% set version = "3.14.7" %}
 
 package:
   name: {{ name|lower }}
@@ -7,19 +7,17 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 6072f9a583059f8ff313f8544d415b4191fc89bdf6230259b0527b706ab1837b
-
-build:
-  number: 1
+  sha256: 6c04252b579bc015cec78081480c63eadf1030f382768248777c6203f059b3f5build:
+  number: 0
   noarch: python
   script: "{{ PYTHON }} -m pip install . -vv"
 
 requirements:
   host:
-    - python  >=3.5
+    - python {{ python_min }}
     - pip
   run:
-    - python  >=3.5
+    - python >={{ python_min }}
     - requests
     - lxml
     - python-dateutil
@@ -27,6 +25,8 @@ requirements:
 test:
   imports:
     - webdav3.client
+  requires:
+    - python {{ python_min }}
 
 about:
   home: https://github.com/ezhov-evgeny/webdav-client-python-3
